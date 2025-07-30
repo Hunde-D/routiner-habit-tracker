@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:routiner_habit_tracker/common/presentation/widgets/avatar_stack.dart';
-import 'package:routiner_habit_tracker/common/presentation/widgets/challenge_card.dart';
-import 'package:routiner_habit_tracker/common/presentation/widgets/habit_card.dart';
+import 'package:routiner_habit_tracker/common/widgets/avatar_stack.dart';
+import 'package:routiner_habit_tracker/common/widgets/challenge_card.dart';
+import 'package:routiner_habit_tracker/common/widgets/habit_card.dart';
+
 
 class OnboardingPageTwo extends StatelessWidget {
   const OnboardingPageTwo({super.key, required this.screenSize});

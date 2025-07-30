@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   static const Color brandColor = Color(0xFF000DFF);
@@ -31,10 +30,11 @@ class AppTheme {
   
 
   static ThemeData get light {
+    final fontFamily = 'AirbnbCereal';
     final baseTheme = ThemeData.light();
-    final baseTextTheme = GoogleFonts.ralewayTextTheme(
-      ThemeData.light().textTheme,
+    final baseTextTheme = baseTheme.textTheme.apply(fontFamily: fontFamily,
     );
+
     return baseTheme.copyWith(
       brightness: Brightness.light,
       primaryColor: AppColors.brandColor,
@@ -51,13 +51,16 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.lightSurfaceColor,
         foregroundColor: AppColors.lightText,
+        toolbarHeight: 100,
+        leadingWidth: 70,
         elevation: 0,
-        titleTextStyle: GoogleFonts.raleway(
-          fontSize: 20,
+        titleTextStyle: TextStyle(
+          fontFamily: fontFamily,
+          fontSize: 24,
           fontWeight: FontWeight.bold,
           color: AppColors.lightText,
         ),
-        iconTheme: IconThemeData(color: AppColors.lightIcon),
+        iconTheme: IconThemeData(color: AppColors.lightText, size: 20),
       ),
       textTheme: baseTextTheme.copyWith(
         displayLarge: baseTextTheme.displayLarge?.copyWith(
@@ -140,7 +143,8 @@ class AppTheme {
             borderRadius: BorderRadius.circular(16.0),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          textStyle: GoogleFonts.raleway(
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
@@ -150,7 +154,8 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: AppColors.lightPrimary,
-          textStyle: GoogleFonts.raleway(
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -164,7 +169,8 @@ class AppTheme {
             borderRadius: BorderRadius.circular(12.0),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          textStyle: GoogleFonts.raleway(
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -173,15 +179,18 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.lightBackgroundColor,
-        hintStyle: GoogleFonts.raleway(
+        hintStyle: TextStyle(
+          fontFamily: fontFamily,
           color: AppColors.lightHint,
           fontSize: 14,
         ),
-        labelStyle: GoogleFonts.raleway(
+        labelStyle: TextStyle(
+          fontFamily: fontFamily,
           color: AppColors.lightText,
           fontSize: 16,
         ),
-        floatingLabelStyle: GoogleFonts.raleway(
+        floatingLabelStyle: TextStyle(
+          fontFamily: fontFamily,
           color: AppColors.lightText,
         ),
         contentPadding: const EdgeInsets.symmetric(
@@ -228,10 +237,10 @@ class AppTheme {
         unselectedItemColor: AppColors.lightIcon,
         type: BottomNavigationBarType.fixed,
         elevation: 8,
-        selectedLabelStyle: GoogleFonts.raleway(
+        selectedLabelStyle: TextStyle(fontFamily: fontFamily,
           fontSize: 12,
         ),
-        unselectedLabelStyle: GoogleFonts.raleway(
+        unselectedLabelStyle: TextStyle(fontFamily: fontFamily,
           fontSize: 12,
         ),
       ),
@@ -259,10 +268,11 @@ class AppTheme {
   }
 
   static ThemeData get dark {
+    final fontFamily = 'AirbnbCereal';
     final baseTheme = ThemeData.dark();
-    final baseTextTheme = GoogleFonts.ralewayTextTheme(
-      ThemeData.dark().textTheme,
+    final baseTextTheme = baseTheme.textTheme.apply(fontFamily: fontFamily,
     );
+
     return baseTheme.copyWith(
       brightness: Brightness.dark,
       primaryColor: AppColors.brandColor,
@@ -280,7 +290,8 @@ class AppTheme {
         foregroundColor: AppColors.darkText,
         elevation: 0,
         centerTitle: true,
-        titleTextStyle: GoogleFonts.raleway(
+        titleTextStyle: TextStyle(
+          fontFamily: fontFamily,
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: AppColors.darkText,
@@ -369,7 +380,8 @@ class AppTheme {
             borderRadius: BorderRadius.circular(16.0),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          textStyle: GoogleFonts.raleway(
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
@@ -379,7 +391,8 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: AppColors.darkPrimary,
-          textStyle: GoogleFonts.raleway(
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -393,7 +406,8 @@ class AppTheme {
             borderRadius: BorderRadius.circular(12.0),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          textStyle: GoogleFonts.raleway(
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -403,15 +417,18 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.darkBackgroundColor,
-        hintStyle: GoogleFonts.raleway(
+        hintStyle: TextStyle(
+          fontFamily: fontFamily,
           color: AppColors.darkHint,
           fontSize: 14,
         ),
-        labelStyle: GoogleFonts.raleway(
+        labelStyle: TextStyle(
+          fontFamily: fontFamily,
           color: AppColors.darkText,
           fontSize: 16,
         ),
-        floatingLabelStyle: GoogleFonts.raleway(
+        floatingLabelStyle: TextStyle(
+          fontFamily: fontFamily,
           color: AppColors.darkText,
         ),
         contentPadding: const EdgeInsets.symmetric(
@@ -458,10 +475,10 @@ class AppTheme {
         unselectedItemColor: AppColors.darkIcon,
         type: BottomNavigationBarType.fixed,
         elevation: 8,
-        selectedLabelStyle: GoogleFonts.raleway(
+        selectedLabelStyle: TextStyle(fontFamily: fontFamily,
           fontSize: 12,
         ),
-        unselectedLabelStyle: GoogleFonts.raleway(
+        unselectedLabelStyle: TextStyle(fontFamily: fontFamily,
           fontSize: 12,
         ),
       ),

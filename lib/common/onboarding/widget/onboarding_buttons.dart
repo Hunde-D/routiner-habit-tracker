@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class NavButton extends StatelessWidget {
-  const NavButton({super.key, required this.currentPage});
+class OnboardingButtons extends StatelessWidget {
+  const OnboardingButtons({super.key, required this.currentPage});
 
   final int currentPage;
 
@@ -40,9 +40,7 @@ class NavButton extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: () {
-                  // Handle Continue with E-mail
-                },
+                onPressed: () => Navigator.pushNamed(context, '/login'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.deepPurple,

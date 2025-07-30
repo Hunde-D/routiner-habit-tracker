@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:routiner_habit_tracker/common/presentation/views/onboarding/onboarding_view.dart';
-import 'package:routiner_habit_tracker/common/presentation/views/splash/splash_view.dart';
+import 'package:routiner_habit_tracker/common/onboarding/views/onboarding_view.dart';
+import 'package:routiner_habit_tracker/common/splash/views/splash_view.dart';
+import 'package:routiner_habit_tracker/features/auth/presentation/pages/login_page.dart';
 import 'package:routiner_habit_tracker/theme/app_theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.light,
       home: SplashScreen(),
-      routes: {'/onboarding': (context) => const OnboardingScreen()},
+      routes: {
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/login': (context) => const LoginPage(),
+        },
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:routiner_habit_tracker/common/presentation/widgets/avatar_message_bubble_large.dart';
-import 'package:routiner_habit_tracker/common/presentation/widgets/avatar_message_bubble_medium.dart';
-import 'package:routiner_habit_tracker/common/presentation/widgets/avatar_message_bubble_small.dart';
+import 'package:routiner_habit_tracker/common/onboarding/widget/avatar_message_bubble_large.dart';
+import 'package:routiner_habit_tracker/common/onboarding/widget/avatar_message_bubble_medium.dart';
+import 'package:routiner_habit_tracker/common/onboarding/widget/avatar_message_bubble_small.dart';
 
 class OnboardingPageOne extends StatelessWidget {
   const OnboardingPageOne({super.key, required this.screenSize});
