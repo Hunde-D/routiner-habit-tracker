@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:routiner_habit_tracker/common/onboarding/widget/onboarding_buttons.dart';
-import 'package:routiner_habit_tracker/common/onboarding/views/onboarding_page_one.dart';
-import 'package:routiner_habit_tracker/common/onboarding/views/onboarding_page_two.dart';
+import 'package:routiner/common/onboarding/widget/onboarding_buttons.dart';
+import 'package:routiner/common/onboarding/views/onboarding_page_one.dart';
+import 'package:routiner/common/onboarding/views/onboarding_page_two.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

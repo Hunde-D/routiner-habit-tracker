@@ -4,8 +4,8 @@ class AvatarStack extends StatelessWidget {
   const AvatarStack({
     super.key,
     required this.imageUrls,
-    this.size = 30,
-    this.overlap = 10,
+    this.size = 24.53,
+    this.overlap = 7.01,
     this.maxDisplayed = 2,
   });
 
@@ -20,8 +20,6 @@ class AvatarStack extends StatelessWidget {
     final displayList = imageUrls.take(maxDisplayed).toList();
     final remaining = total - maxDisplayed;
     final double avatarRadius = size / 2;
-    final double smallAvatarRadius = avatarRadius * 0.8;
-    final topOffset = (size - (smallAvatarRadius * 2)) / 2;
     final count = displayList.length + (remaining > 0 ? 1 : 0);
     final totalWidth = size + (count - 1) * (size - overlap);
     return SizedBox(
@@ -47,12 +45,19 @@ class AvatarStack extends StatelessWidget {
             ),
           if (remaining > 0)
             Positioned(
-              top: topOffset,
               left: totalWidth - size,
               child: CircleAvatar(
-                radius: smallAvatarRadius,
-                backgroundColor: Colors.grey.shade300,
-                child: Text('+$remaining ', style: TextStyle(color: Colors.white)),
+                radius: avatarRadius,
+                backgroundColor: Theme.of(
+                  context,
+                ).colorScheme.secondaryContainer,
+                child: Text(
+                  '+$remaining ',
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
             ),
         ],

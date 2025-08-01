@@ -1,5 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:routiner/app/blocs/auth_cubit.dart';
+import 'package:routiner/app/blocs/auth_state.dart';
 
 class OnboardingButtons extends StatelessWidget {
   const OnboardingButtons({super.key, required this.currentPage});
@@ -19,12 +21,12 @@ class OnboardingButtons extends StatelessWidget {
           children: [
             // --- Page Indicators ---
             Row(
+              spacing: 16,
               mainAxisAlignment: MainAxisAlignment.start,
               children: List.generate(2, (index) {
                 // Changed to 2 pages
                 return Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  width: currentPage == index ? 24 : 8,
+                  width: currentPage == index ? 16 : 8,
                   height: 8,
                   decoration: BoxDecoration(
                     color: currentPage == index
@@ -37,79 +39,100 @@ class OnboardingButtons extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             // --- Buttons ---
-            SizedBox(
-              width: double.infinity,
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.2),
+                    spreadRadius: 0,
+                    blurRadius: 0,
+                    offset: Offset(0, 0),
+                  ),
+                ],
+              ),
               child: ElevatedButton.icon(
                 onPressed: () => Navigator.pushNamed(context, '/login'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.deepPurple,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
+                  backgroundColor: Theme.of(context).colorScheme.surface,
+                  foregroundColor: Theme.of(context).colorScheme.onSurface,
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  elevation: 0,
                 ),
-                icon: const Icon(Icons.email_outlined),
-                label: const Text(
-                  'Continue with E-mail',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                icon: Image.asset(
+                  'assets/icons/login.png',
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.login_outlined),
                 ),
+                label: Text('Continue with E-mail'),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
             // Social Media Buttons (Row)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      // Handle Apple login
-                    },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Colors.black,
-                      side: const BorderSide(
-                        color: Colors.transparent,
+            BlocConsumer<AuthCubit, AuthState>(
+              builder: (context, state) {
+                return Row(
+                  spacing: 12,
+                  children: [
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () => Navigator.pushNamed(context, '/login'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.surface,
+                          foregroundColor: Theme.of(
+                            context,
+                          ).colorScheme.onSurface,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                        ),
+                        icon: const Icon(Icons.apple, size: 20),
+                        label: Text('Apple'),
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                    ),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () => {
+                          context.read<AuthCubit>().signInWithGoogle(),
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.surface,
+                          foregroundColor: Theme.of(
+                            context,
+                          ).colorScheme.onSurface,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                        ),
+                        icon: Image.network(
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png',
+                          height: 20,
+                          width: 20,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Icon(Icons.g_mobiledata),
+                        ),
+                        label: Text('Google'),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    icon: const Icon(Icons.apple, size: 24),
-                    label: const Text('Apple', style: TextStyle(fontSize: 16)),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      // Handle Google login
-                    },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Colors.black,
-                      side: const BorderSide(color: Colors.transparent),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                    ),
-                    icon: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png',
-                      height: 24,
-                      width: 24,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.g_mobiledata), // Fallback
-                    ),
-                    label: const Text('Google', style: TextStyle(fontSize: 16)),
-                  ),
-                ),
-              ],
+                  ],
+                );
+              },
+              listener: (context, state) {
+                if (state is AuthError) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(state.message)));
+                } else if (state is AuthAuthenticated) {
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
+              },
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 12),
             // Terms & Privacy Policy
             Align(
               alignment: Alignment.center,

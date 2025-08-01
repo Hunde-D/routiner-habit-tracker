@@ -4,10 +4,7 @@ class ChallengeCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final double progress;
-  final IconData? icon;
-  final String? emoji;
-  final double iconSize;
-  final Color iconColor;
+  final String emoji;
   final VoidCallback? onAddTap;
   final Widget? avatarWidget;
 
@@ -16,73 +13,73 @@ class ChallengeCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.progress,
-    this.icon,
-    this.iconSize = 24.0,
-    this.iconColor = Colors.blueAccent,
-    this.emoji,
+    required this.emoji,
     this.onAddTap,
     this.avatarWidget,
-  }) : assert(
-        icon != null || emoji != null,
-        'Either icon or emoji must be provided',
-      ),
-      assert(icon != null || emoji != null, 'Provide only one: icon OR emoji');
-
+  });
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+      margin: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
         child: Column(
+          spacing: 8.0,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 10.0,
               children: [
                 Row(
+                  spacing: 10.0,
                   children: [
-                    if (emoji != null)
-                      Text(emoji!, style: TextStyle(fontSize: 20))
-                    else if (icon != null)
-                      Icon(icon, color: iconColor, size: iconSize),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text(title), Text(subtitle)],
+                    SizedBox(
+                      width: 31.54,
+                      height: 31.54,
+                      child: Center(
+                        child: Text(emoji, style: TextStyle(fontSize: 24)),
                       ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                        Text(
+                          subtitle,
+                          style: Theme.of(context).textTheme.labelSmall,
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     if (avatarWidget != null) avatarWidget!,
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: InkWell(
-                        onTap: onAddTap,
-                        child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade300),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(14.0),
-                          ),
-                          child: Icon(Icons.add, color: Colors.black),
-                        ),
-                      ),
+                    Text(
+                      '2 friends joined',
+                      style: Theme.of(context).textTheme.labelSmall,
                     ),
+
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 6),
-            LinearProgressIndicator(
-              value: 0.9,
-              backgroundColor: Colors.grey.shade200,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
-              borderRadius: BorderRadius.circular(8.0),
-              trackGap: 25.0,
+            SizedBox(
+              height: 3.5,
+              child: LinearProgressIndicator(
+                value: 0.9,
+                backgroundColor: Theme.of(context).colorScheme.outline,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  Theme.of(context).colorScheme.primary,
+                ),
+                borderRadius: BorderRadius.circular(7.0),
+                trackGap: 25.0,
+              ),
             ),
           ],
         ),

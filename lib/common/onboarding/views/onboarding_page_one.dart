@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:routiner_habit_tracker/common/onboarding/widget/avatar_message_bubble_large.dart';
-import 'package:routiner_habit_tracker/common/onboarding/widget/avatar_message_bubble_medium.dart';
-import 'package:routiner_habit_tracker/common/onboarding/widget/avatar_message_bubble_small.dart';
+import 'package:routiner/common/onboarding/widget/avatar_message_bubble_large.dart';
+import 'package:routiner/common/onboarding/widget/avatar_message_bubble_medium.dart';
+import 'package:routiner/common/onboarding/widget/avatar_message_bubble_small.dart';
 
 class OnboardingPageOne extends StatelessWidget {
   const OnboardingPageOne({super.key, required this.screenSize});
@@ -84,19 +84,14 @@ class OnboardingPageOne extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Create\nGood Habits', 
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    height: 1.2,
-                  ),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 const SizedBox(height: 16),
                 Text('Change your life by slowly adding new healthy habits and sticking to them.',
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.8),
-                    fontSize: 16,
-                  ) ,)
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                )
                 
               ],
             ),

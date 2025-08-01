@@ -1,4 +1,4 @@
-package com.example.routiner_habit_tracker
+package com.example.routiner
 
 import io.flutter.embedding.android.FlutterActivity
 

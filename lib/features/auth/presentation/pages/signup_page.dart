@@ -4,21 +4,21 @@ import 'package:routiner/app/blocs/auth_cubit.dart';
 import 'package:routiner/app/blocs/auth_state.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      context.read<AuthCubit>().signIn(
+      context.read<AuthCubit>().signUp(
         _emailController.text,
         _passwordController.text,
       );
@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Continue with E-mail'),
+        title: const Text('Create Account'),
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(24.0, 12.0, 0.0, 12.0),
           child: CustomLeading(onTap: () => Navigator.pop(context)),
@@ -54,6 +54,12 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Text('NAME', style: Theme.of(context).textTheme.labelLarge),
+                    // const SizedBox(height: 8.0),
+                    // TextFormField(
+                    //   decoration: InputDecoration(hintText: 'Enter your name'),
+                    // ),
+                    // const SizedBox(height: 24.0),
                     Text(
                       'E-MAIL',
                       style: Theme.of(context).textTheme.labelLarge,
@@ -93,30 +99,11 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: 'Enter your password',
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Password reset feature coming soon!',
-                            ),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'I forgot my password',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          fontSize: 14.0,
-                        ),
-                      ),
-                    ),
                     const SizedBox(height: 50.0),
                     Center(
                       child: TextButton(
-                        onPressed: () =>
-                            Navigator.pushNamed(context, '/signup'),
-                        child: Text('Don\'t have an account? Let\'s create!'),
+                        onPressed: () => Navigator.pushNamed(context, '/login'),
+                        child: Text('Have an account? Sign In'),
                       ),
                     ),
                     Container(
@@ -135,7 +122,9 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: _isLoading ? null : _submitForm,
                         child: _isLoading
                             ? CircularProgressIndicator()
-                            : Text('Next'),
+                            : Text(
+                                'Next'
+                              ),
                       ),
                     ),
                   ],
@@ -144,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
             },
             listener: (context, state) {
               if (state is AuthAuthenticated) {
-                Navigator.pushReplacementNamed(context, '/home');
+                Navigator.pushNamed(context, '/home');
               } else if (state is AuthError) {
                 ScaffoldMessenger.of(
                   context,

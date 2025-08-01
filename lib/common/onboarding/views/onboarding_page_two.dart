@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:routiner_habit_tracker/common/widgets/avatar_stack.dart';
-import 'package:routiner_habit_tracker/common/widgets/challenge_card.dart';
-import 'package:routiner_habit_tracker/common/widgets/habit_card.dart';
+import 'package:routiner/common/widgets/avatar_stack.dart';
+import 'package:routiner/common/widgets/challenge_card.dart';
+import 'package:routiner/common/widgets/habit_card.dart';
 
 
 class OnboardingPageTwo extends StatelessWidget {
@@ -47,16 +47,22 @@ class OnboardingPageTwo extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 4.0,
               children: [
-                const SizedBox(height: 16),
-                Text('Challenges', style: TextStyle(color: Colors.white)),
+                Text(
+                  'Challenges',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                  ),
+                ),
                 ChallengeCard(
                   title: 'Best Runners! 🏃‍♂️',
                   subtitle: '5 days 13 hours left',
                   progress: 0.25,
                   emoji: '🕓',
                   // icon: ,
-                  iconColor: Colors.blueAccent,
                   avatarWidget: AvatarStack(
                     imageUrls: [
                       'assets/images/onboarding/avatar-small.png',
@@ -64,13 +70,19 @@ class OnboardingPageTwo extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text('Habits', style: TextStyle(color: Colors.white)),
+                Text(
+                  'Habits',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                  ),
+                ),
                 HabitCard(
                   title: 'Drink the water',
-                  countText: '1000/2000 ML',
+                  subtitle: '1000/2000 ML',
                   progress: 0.5,
                   emoji: '💧',
-                  iconColor: Colors.blueAccent,
                   avatarWidget: AvatarStack(
                     imageUrls: [
                       'assets/images/onboarding/avatar-small.png',
@@ -83,10 +95,9 @@ class OnboardingPageTwo extends StatelessWidget {
                 ),
                 HabitCard(
                   title: 'Walk',
-                  countText: '7500/10000 STEPS',
+                  subtitle: '7500/10000 STEPS',
                   progress: 0.75,
                   emoji: '🚶‍♂️',
-                  iconColor: Colors.orangeAccent,
                   avatarWidget: AvatarStack(
                     imageUrls: [
                       'assets/images/onboarding/avatar-small.png',
@@ -96,10 +107,9 @@ class OnboardingPageTwo extends StatelessWidget {
                 ),
                 HabitCard(
                   title: 'Meditation',
-                  countText: '30/30 MIN',
+                  subtitle: '30/30 MIN',
                   progress: 1.0,
                   emoji: '🧘‍♀️',
-                  iconColor: Colors.greenAccent,
                   avatarWidget: AvatarStack(
                     imageUrls: [
                       'assets/images/onboarding/avatar-small.png',
@@ -125,19 +135,13 @@ class OnboardingPageTwo extends StatelessWidget {
               children: [
                 Text(
                   'Track\nYour Progress',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    height: 1.2,
-                  ),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 const SizedBox(height: 16),
                 Text(
                   'Everyday you become one step closer to your goal. Don\'t give up!',
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.8),
-                    fontSize: 16,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
                 ),
               ],

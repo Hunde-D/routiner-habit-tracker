@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:routiner/app/blocs/auth_cubit.dart';
+import 'package:routiner/app/blocs/auth_state.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -8,26 +11,31 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-    final List<String> _avatarImageUrls = [
-    'https://api.dicebear.com/9.x/lorelei/png?seed=small',
-    'https://api.dicebear.com/9.x/lorelei/png?seed=medium',
-    'https://api.dicebear.com/9.x/lorelei/png?seed=large',
-  ];
   @override
   void initState() {
     super.initState();
-    _navigateToOnboarding();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      for (var url in _avatarImageUrls) {
-        precacheImage(NetworkImage(url), context);
-      }
-    });
+    _initializeApp();
   }
 
-  void _navigateToOnboarding() async {
-    await Future.delayed(const Duration(seconds: 3), () {});
-    Navigator.pushReplacementNamed(context, '/onboarding');
+  Future<void> _initializeApp() async {
+    await Future.delayed(
+      const Duration(seconds: 3),
+      () => {
+        // Initialize the AuthCubit
+        context.read<AuthCubit>().initialize(),
+      },
+    );
+
+    if (!mounted) return;
+    _redirectBasedOnAuth();
+  }
+
+  void _redirectBasedOnAuth() {
+    final state = context.read<AuthCubit>().state;
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      state is AuthAuthenticated ? '/home' : '/onboarding',
+      (route) => false,
+    );
   }
 
   @override

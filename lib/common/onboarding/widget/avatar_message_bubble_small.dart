@@ -21,12 +21,12 @@ class _AvatarMessageBubbleSmallState extends State<AvatarMessageBubbleSmall> {
         height: 100,
         child: Stack(
           children: [
-            const Positioned(
+            Positioned(
               top: 10,
               right: 0,
               child: CircleAvatar(
                 radius: 20,
-                backgroundColor: Colors.white,
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
                 backgroundImage:  AssetImage(
                   'assets/images/onboarding/avatar-small.png',
                 ),
@@ -41,7 +41,7 @@ class _AvatarMessageBubbleSmallState extends State<AvatarMessageBubbleSmall> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   shape: BoxShape.rectangle,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,10 +54,17 @@ class _AvatarMessageBubbleSmallState extends State<AvatarMessageBubbleSmall> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            colors: [Color(0xFF6B73FF), Color(0xFF000DFF)],
+                            colors: [
+                              Theme.of(context).colorScheme.secondary,
+                              Theme.of(context).primaryColor,
+                            ],
                           ),
                         ),
-                        child: Icon(Icons.check, color: Colors.white, size: 15),
+                        child: Icon(
+                          Icons.check,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          size: 15,
+                        ),
                       ),
                     ),
                     Padding(
@@ -71,7 +78,9 @@ class _AvatarMessageBubbleSmallState extends State<AvatarMessageBubbleSmall> {
                             height: 5,
                             margin: EdgeInsets.only(bottom: 4),
                             decoration: BoxDecoration(
-                              color: Colors.deepPurple.withValues(alpha: 0.5),
+                              color: Theme.of(
+                                context,
+                              ).primaryColor.withValues(alpha: 0.5),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
@@ -79,7 +88,9 @@ class _AvatarMessageBubbleSmallState extends State<AvatarMessageBubbleSmall> {
                             width: 20,
                             height: 5,
                             decoration: BoxDecoration(
-                              color: Colors.deepPurple.withValues(alpha: 0.5),
+                              color: Theme.of(
+                                context,
+                              ).primaryColor.withValues(alpha: 0.5),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),

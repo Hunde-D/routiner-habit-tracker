@@ -25,9 +25,9 @@ class _AvatarMessageBubbleLargeState
             Positioned(
               top: 20,
               left: 0,
-              child: const CircleAvatar(
+              child: CircleAvatar(
                 radius: 40,
-                backgroundColor: Colors.white,
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
                 backgroundImage: AssetImage(
                   'assets/images/onboarding/avatar-large.png',
                 ),
@@ -42,7 +42,7 @@ class _AvatarMessageBubbleLargeState
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   shape: BoxShape.rectangle,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,10 +55,17 @@ class _AvatarMessageBubbleLargeState
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            colors: [Color(0xFF6B73FF), Color(0xFF000DFF)],
+                            colors: [
+                              Theme.of(context).colorScheme.secondary,
+                              Theme.of(context).primaryColor,
+                            ],
                           ),
                         ),
-                        child: Icon(Icons.check, color: Colors.white, size: 20,),
+                        child: Icon(
+                          Icons.check,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          size: 20,
+                        ),
                       ),
                     ),
                     Padding(
@@ -72,7 +79,9 @@ class _AvatarMessageBubbleLargeState
                             height: 5,
                             margin: EdgeInsets.only(bottom: 6),
                             decoration: BoxDecoration(
-                              color: Colors.deepPurple.withValues(alpha: 0.5),
+                              color: Theme.of(
+                                context,
+                              ).primaryColor.withValues(alpha: 0.5),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
@@ -80,7 +89,9 @@ class _AvatarMessageBubbleLargeState
                             width: 50,
                             height: 5,
                             decoration: BoxDecoration(
-                              color: Colors.deepPurple.withValues(alpha: 0.5),
+                              color: Theme.of(
+                                context,
+                              ).primaryColor.withValues(alpha: 0.5),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
