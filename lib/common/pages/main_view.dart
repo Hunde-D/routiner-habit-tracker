@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:routiner/features/explore/page/explore_page.dart';
 import 'package:routiner/features/habit/presentation/page/home_page.dart';
 import 'package:routiner/common/pages/main_scafold.dart';
 import 'package:routiner/features/profile/presentation/pages/profile_page.dart';
@@ -17,8 +18,7 @@ class _MainViewState extends State<MainView> {
 
   List<Widget> get _pages =>  [
     HomePage(),
-    ProfilePage( key: ValueKey(_profilePageTabIndex), tabIndex: _profilePageTabIndex),
-    ProfilePage( key: ValueKey(_profilePageTabIndex), tabIndex: _profilePageTabIndex),
+    ExplorePage(),
     ProfilePage( key: ValueKey(_profilePageTabIndex), tabIndex: _profilePageTabIndex),
     ProfilePage( key: ValueKey(_profilePageTabIndex), tabIndex: _profilePageTabIndex),
   ];
@@ -30,7 +30,7 @@ class _MainViewState extends State<MainView> {
           selectedIndex: _homePageTabIndex,
           onTabChange: _onHomeTabChanged,
         );
-      case 4:
+      case 3:
         return ProfileAppBar(
           selectedIndex: _profilePageTabIndex,
           onTabChange: _onProfileTabChanged,

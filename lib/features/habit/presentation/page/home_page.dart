@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
 import 'package:routiner/common/widgets/avatar_stack.dart';
 import 'package:routiner/common/widgets/challenge_card.dart';
@@ -190,5 +189,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 120);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 125);
 }

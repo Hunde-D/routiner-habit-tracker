@@ -81,7 +81,7 @@ class AppTheme {
         foregroundColor: AppColors.lightText,
         titleSpacing: 8,
         leadingWidth: 72,
-        toolbarHeight: 100,
+        toolbarHeight: 72,
         elevation: 0,
         titleTextStyle: TextStyle(
           fontFamily: fontFamily,
@@ -277,7 +277,7 @@ class AppTheme {
         ),
       ),
       dividerTheme: const DividerThemeData(
-        color: AppColors.lightDivider,
+        color: AppColors.lightBorder,
         thickness: 1,
         space: 1,
       ),

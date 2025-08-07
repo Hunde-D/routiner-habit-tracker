@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
 import 'package:routiner/common/widgets/custom_tab.dart';
 import 'package:routiner/features/profile/presentation/views/achievements.dart';
@@ -50,11 +51,19 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: const Text('Your Profile'),
+      leading: CustomLeading(
+        padding: const EdgeInsets.fromLTRB(24.0, 12.0, 0.0, 12.0),
+        onTap: () => Navigator.of(context).pop(),
+      ),
       actions: [
         CustomLeading(
           leadingIcon: Icons.settings,
           padding: const EdgeInsets.fromLTRB(24.0, 12.0, 24.0, 12.0),
+          onTap: () {
+            Navigator.of(context).pushNamed('/settings');
+          },
         ),
+
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(108),

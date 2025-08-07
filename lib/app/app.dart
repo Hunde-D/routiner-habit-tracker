@@ -9,6 +9,7 @@ import 'package:routiner/features/auth/presentation/pages/signup_page.dart';
 import 'package:routiner/features/auth/services/auth_service.dart';
 import 'package:routiner/features/habit/presentation/page/create_habit_page.dart';
 import 'package:routiner/common/pages/main_view.dart';
+import 'package:routiner/features/profile/presentation/pages/settings.dart';
 import 'package:routiner/theme/app_theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           '/signup': (context) => const SignupPage(),
           '/home': (context) => const MainView(),
           '/create-habit': (context) => const CreateHabitPage(),
+          '/settings': (context) => const Settings(),
         },
         initialRoute: '/',
       ),

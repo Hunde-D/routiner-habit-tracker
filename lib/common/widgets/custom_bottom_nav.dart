@@ -52,12 +52,12 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
               _buildNavIcon(
                 icon: FontAwesomeIcons.medal,
-                index: 3,
+                index: 2,
                 context: context,
               ),
               _buildNavIcon(
                 icon: FontAwesomeIcons.solidUser,
-                index: 4,
+                index: 3,
                 context: context,
               ),
             ],

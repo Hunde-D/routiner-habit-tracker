@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomLeading extends StatelessWidget {
   const CustomLeading({
     super.key,
     this.onTap,
-    this.leadingIcon = Icons.arrow_back_ios_new_rounded ,
+    this.leadingIcon = FontAwesomeIcons.chevronLeft,
     this.size = const Size(48, 48),
     this.iconSize = 24,
     this.borderRadius = 16.0,
