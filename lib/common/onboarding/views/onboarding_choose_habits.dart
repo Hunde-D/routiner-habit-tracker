@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
-// --- Habit Item Model ---
+
 class HabitItem {
   final IconData icon;
   final String name;
-  final Color borderColor; // To distinguish the selected item
+  final Color borderColor;
 
   HabitItem({
     required this.icon,
     required this.name,
-    this.borderColor = Colors.transparent, // Default to transparent
+    this.borderColor = Colors.transparent,
   });
 }
 class OnboardingChooseHabits extends StatefulWidget {
@@ -27,20 +27,20 @@ class _OnboardingChooseHabitsState extends State<OnboardingChooseHabits> {
     HabitItem(
       icon: Icons.self_improvement,
       name: 'Meditate',
-    ), // Assuming a suitable icon
+    ),
     HabitItem(
       icon: Icons.laptop_mac,
       name: 'Study',
-    ), // Assuming a suitable icon
+    ),
     HabitItem(
       icon: Icons.menu_book,
       name: 'Journal',
-    ), // Assuming a suitable icon
-    HabitItem(icon: Icons.eco, name: 'Planting'), // Using a leaf icon
+    ),
+    HabitItem(icon: Icons.eco, name: 'Planting'),
     HabitItem(
       icon: Icons.nightlight_round,
       name: 'Sleep',
-    ), // Using a sleep emoji-like icon
+    ),
   ];
   int? _selectedHabitIndex;
   @override
@@ -48,10 +48,7 @@ class _OnboardingChooseHabitsState extends State<OnboardingChooseHabits> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Habits'),
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(24.0, 12.0, 0.0, 12.0),
-          child: CustomLeading(onTap: () => Navigator.pop(context)),
-        ),
+        leading: CustomLeading(onTap: () => Navigator.pop(context)),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(24.0,20.0, 24.0, 40.0),
@@ -76,8 +73,8 @@ class _OnboardingChooseHabitsState extends State<OnboardingChooseHabits> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 16.0,
                   mainAxisSpacing: 16.0,
-                  childAspectRatio: 1.0, // Make items square
-                ), 
+                  childAspectRatio: 1.0,
+                ),
               itemCount: _habits.length,
               itemBuilder: (context, index) {
                 final habit = _habits[index];
@@ -112,7 +109,12 @@ class _OnboardingChooseHabitsState extends State<OnboardingChooseHabits> {
               },
             ),
             ),
-            ElevatedButton(onPressed: (){}, child: Text('Next')),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/home');
+              },
+              child: Text('Next'),
+            ),
           ],
         ),
       ),

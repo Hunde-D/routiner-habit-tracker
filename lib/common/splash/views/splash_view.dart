@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:routiner/app/blocs/auth_cubit.dart';
-import 'package:routiner/app/blocs/auth_state.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:routiner/app/blocs/auth_cubit.dart';
+// import 'package:routiner/app/blocs/auth_state.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
       () => {
         // Initialize the AuthCubit
-        context.read<AuthCubit>().initialize(),
+        // context.read<AuthCubit>().initialize(),
       },
     );
 
@@ -31,9 +31,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _redirectBasedOnAuth() {
-    final state = context.read<AuthCubit>().state;
+    // final state = context.read<AuthCubit>().state;
     Navigator.of(context).pushNamedAndRemoveUntil(
-      state is AuthAuthenticated ? '/home' : '/onboarding',
+      '/onboarding',
+      // state is AuthAuthenticated ? '/home' : '/onboarding',
       (route) => false,
     );
   }

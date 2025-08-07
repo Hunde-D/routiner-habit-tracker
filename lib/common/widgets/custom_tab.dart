@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
 class CustomTab extends StatefulWidget {
-  const CustomTab({super.key});
+  const CustomTab({
+    super.key,
+    required this.tabs,
+    this.selectedIndex,
+    this.onTabChange,
+  });
+
+  final List<String> tabs;
+  final int? selectedIndex;
+  final ValueChanged<int>? onTabChange;
 
   @override
   State<CustomTab> createState() => _CustomTabState();
 }
 
 class _CustomTabState extends State<CustomTab> {
-  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +29,12 @@ class _CustomTabState extends State<CustomTab> {
       ),
       child: Row(
         children: [
-          _buildTab(
-            label: 'Today',
-            isSelected: selectedIndex == 0,
-            onTap: () => setState(() => selectedIndex = 0),
-          ),
-          _buildTab(
-            label: 'Clubs',
-            isSelected: selectedIndex == 1,
-            badgeCount: 2,
-            onTap: () => setState(() => selectedIndex = 1),
-          ),
+          for (int i = 0; i < widget.tabs.length; i++)
+            _buildTab(
+              label: widget.tabs[i],
+              isSelected: widget.selectedIndex == i,
+              onTap: () => widget.onTabChange?.call(i),
+            ),
         ],
       ),
     );
@@ -41,14 +44,14 @@ class _CustomTabState extends State<CustomTab> {
     required String label,
     required bool isSelected,
     required VoidCallback onTap,
-    int? badgeCount,
+    // int? badgeCount,
   }) {
     return Expanded(
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
             color: isSelected ? Colors.white : Colors.transparent,
             borderRadius: BorderRadius.circular(16),

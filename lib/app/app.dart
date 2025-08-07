@@ -7,7 +7,8 @@ import 'package:routiner/common/splash/views/splash_view.dart';
 import 'package:routiner/features/auth/presentation/pages/login_page.dart';
 import 'package:routiner/features/auth/presentation/pages/signup_page.dart';
 import 'package:routiner/features/auth/services/auth_service.dart';
-import 'package:routiner/features/habit/presentation/page/home_page.dart';
+import 'package:routiner/features/habit/presentation/page/create_habit_page.dart';
+import 'package:routiner/common/pages/main_view.dart';
 import 'package:routiner/theme/app_theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
               const OnboardingChooseHabits(),
           '/login': (context) => const LoginPage(),
           '/signup': (context) => const SignupPage(),
-          '/home': (context) => const HomePage(),
+          '/home': (context) => const MainView(),
+          '/create-habit': (context) => const CreateHabitPage(),
         },
         initialRoute: '/',
       ),

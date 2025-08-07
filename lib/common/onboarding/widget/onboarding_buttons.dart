@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:routiner/app/blocs/auth_cubit.dart';
-import 'package:routiner/app/blocs/auth_state.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:routiner/app/blocs/auth_cubit.dart';
+// import 'package:routiner/app/blocs/auth_state.dart';
 
 class OnboardingButtons extends StatelessWidget {
   const OnboardingButtons({super.key, required this.currentPage});
@@ -68,69 +68,46 @@ class OnboardingButtons extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             // Social Media Buttons (Row)
-            BlocConsumer<AuthCubit, AuthState>(
-              builder: (context, state) {
-                return Row(
-                  spacing: 12,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () => Navigator.pushNamed(context, '/login'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.surface,
-                          foregroundColor: Theme.of(
-                            context,
-                          ).colorScheme.onSurface,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                        ),
-                        icon: const Icon(Icons.apple, size: 20),
-                        label: Text('Apple'),
+            Row(
+              spacing: 12,
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () => Navigator.pushNamed(context, '/login'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      foregroundColor: Theme.of(context).colorScheme.onSurface,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
                       ),
                     ),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () => {
-                          context.read<AuthCubit>().signInWithGoogle(),
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.surface,
-                          foregroundColor: Theme.of(
-                            context,
-                          ).colorScheme.onSurface,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                        ),
-                        icon: Image.network(
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png',
-                          height: 20,
-                          width: 20,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Icon(Icons.g_mobiledata),
-                        ),
-                        label: Text('Google'),
+                    icon: const Icon(Icons.apple, size: 20),
+                    label: Text('Apple'),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () => {Navigator.pushNamed(context, '/login')},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      foregroundColor: Theme.of(context).colorScheme.onSurface,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
                       ),
                     ),
-                  ],
-                );
-              },
-              listener: (context, state) {
-                if (state is AuthError) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(state.message)));
-                } else if (state is AuthAuthenticated) {
-                  Navigator.pushReplacementNamed(context, '/home');
-                }
-              },
+                    icon: Image.network(
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png',
+                      height: 20,
+                      width: 20,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.g_mobiledata),
+                    ),
+                    label: Text('Google'),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 12),
             // Terms & Privacy Policy
