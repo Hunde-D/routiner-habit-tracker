@@ -30,12 +30,9 @@ class _MainViewState extends State<MainView> {
           selectedIndex: _homePageTabIndex,
           onTabChange: _onHomeTabChanged,
         );
-      case 3:
-        return ProfileAppBar(
-          selectedIndex: _profilePageTabIndex,
-          onTabChange: _onProfileTabChanged,
-        );
-      default:
+      case 1:
+        return ExploreAppBar();
+      case 2:
         return AppBar(
           title: const Text('Placeholder'),
           actions: [
@@ -47,6 +44,13 @@ class _MainViewState extends State<MainView> {
             ),
           ],
         );
+      case 3:
+        return ProfileAppBar(
+          selectedIndex: _profilePageTabIndex,
+          onTabChange: _onProfileTabChanged,
+        );
+      default:
+        return null;
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:routiner/app/data/challenges_dummy_data.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
 import 'package:routiner/common/widgets/avatar_stack.dart';
 import 'package:routiner/common/widgets/challenge_card.dart';
@@ -40,17 +41,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               ChallengeCard(
-                title: 'Best Runners! 🏃‍♂️',
-                subtitle: '5 days 13 hours left',
-                progress: 0.25,
-                emoji: '🕓',
-                // icon: ,
-                avatarWidget: AvatarStack(
-                  imageUrls: [
-                    'assets/images/onboarding/avatar-small.png',
-                    'assets/images/onboarding/avatar-medium.png',
-                  ],
-                ),
+                challenge: challenges[0], onAddTap: () {},
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

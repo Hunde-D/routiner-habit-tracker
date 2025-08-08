@@ -28,7 +28,7 @@ class _NewHabitDialogState extends State<NewHabitDialog> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
+      padding: const EdgeInsets.fromLTRB(24.0, 40.0, 0.0, 40.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,23 +41,26 @@ class _NewHabitDialogState extends State<NewHabitDialog> {
               color: Theme.of(context).textTheme.bodySmall?.color,
             ),
           ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                spacing: 12.0,
-                children: [
-                  Text(
-                    'Create Custom Habit',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  CustomLeading(
-                    leadingIcon: FontAwesomeIcons.plus,
-                    size: const Size(36, 36),
-                    borderRadius: 12,
-                  ),
-                ],
+          Padding(
+            padding: const EdgeInsets.only(right: 24.0),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  spacing: 12.0,
+                  children: [
+                    Text(
+                      'Create Custom Habit',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    CustomLeading(
+                      leadingIcon: FontAwesomeIcons.plus,
+                      size: const Size(36, 36),
+                      borderRadius: 12,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

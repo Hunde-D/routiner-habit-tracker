@@ -9,10 +9,11 @@ class PopularHabitsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.zero,
       color: habit.color,
       child: Container(
-        width: 100,
-        height: 80,
+        width: 128,
+        height: 102,
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
 import 'package:routiner/common/widgets/custom_tab.dart';
 import 'package:routiner/features/profile/presentation/views/achievements.dart';
@@ -46,6 +45,10 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
   final int selectedIndex;
   final ValueChanged<int>? onTabChange;
+
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 182);
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +132,4 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 182);
 }

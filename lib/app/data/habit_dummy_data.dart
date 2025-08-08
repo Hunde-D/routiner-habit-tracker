@@ -52,3 +52,43 @@ final List<Habit> badHabitsToQuit = [
     extraInfo: "Week 1 sober",
   ),
 ];
+// ======= Habit Clubs =======
+
+final List<Habit> habitClubs = [
+  Habit(
+    title: "Runners",
+    goal: "336 members",
+    emoji: "🏃‍♂️",
+    color: Color(0xFFFFFFFF),
+  ),
+  Habit(
+    title: "Coders Unite",
+    goal: "612 members",
+    emoji: "🧑‍💻",
+    color: Color(0xFFFFFFFF),
+  ),
+  Habit(
+    title: "Tea Lovers",
+    goal: "278 members",
+    emoji: "🍵",
+    color: Color(0xFFFFFFFF),
+  ),
+  Habit(
+    title: "Bookworms",
+    goal: "712 members",
+    emoji: "📖",
+    color: Color(0xFFFFFFFF),
+  ),
+  Habit(
+    title: "Nature Seekers",
+    goal: "289 members",
+    emoji: "🌿",
+    color: Color(0xFFFFFFFF),
+  ),
+  Habit(
+    title: "Cat Lovers",
+    goal: "462 members",
+    emoji: "🐱",
+    color: Color(0xFFFFFFFF),
+  ),
+];
