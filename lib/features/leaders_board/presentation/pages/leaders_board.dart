@@ -12,7 +12,6 @@ class LeaderboardPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // 1. The full-page gradient background
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -23,7 +22,6 @@ class LeaderboardPage extends StatelessWidget {
             ),
           ),
 
-          // 2. The concentric circles as a background element
           Positioned.fill(
             child: Center(
               child: Stack(
