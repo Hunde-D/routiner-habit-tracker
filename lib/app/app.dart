@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:routiner/app/blocs/auth_cubit.dart';
 import 'package:routiner/common/onboarding/views/onboarding_choose_habits.dart';
 import 'package:routiner/common/onboarding/views/onboarding_view.dart';
@@ -10,6 +11,7 @@ import 'package:routiner/features/auth/services/auth_service.dart';
 import 'package:routiner/features/habit/presentation/page/create_habit_page.dart';
 import 'package:routiner/common/pages/main_view.dart';
 import 'package:routiner/features/profile/presentation/pages/settings.dart';
+import 'package:routiner/l10n/app_localizations.dart';
 import 'package:routiner/theme/app_theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -35,6 +37,14 @@ class MyApp extends StatelessWidget {
           '/settings': (context) => const Settings(),
         },
         initialRoute: '/',
+        // locale: const Locale('am', 'ET'),
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }

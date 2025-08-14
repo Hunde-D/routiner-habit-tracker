@@ -18,50 +18,48 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(64),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          height: 64,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Theme.of(context).colorScheme.outline,
-              width: 1,
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        height: 64,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outline,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(64),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            _buildNavIcon(
+              icon: FontAwesomeIcons.house,
+              index: 0,
+              context: context,
             ),
-            borderRadius: BorderRadius.circular(64),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              _buildNavIcon(
-                icon: FontAwesomeIcons.house,
-                index: 0,
-                context: context,
-              ),
-              _buildNavIcon(
-                icon: FontAwesomeIcons.solidCompass,
-                index: 1,
-                context: context,
-              ),
-              GradientIconButton(
-                icon: FontAwesomeIcons.circlePlus,
-                onPressed: onAddHabit,
-              ),
-              _buildNavIcon(
-                icon: FontAwesomeIcons.medal,
-                index: 2,
-                context: context,
-              ),
-              _buildNavIcon(
-                icon: FontAwesomeIcons.solidUser,
-                index: 3,
-                context: context,
-              ),
-            ],
-          ),
+            _buildNavIcon(
+              icon: FontAwesomeIcons.solidCompass,
+              index: 1,
+              context: context,
+            ),
+            GradientIconButton(
+              icon: FontAwesomeIcons.circlePlus,
+              onPressed: onAddHabit,
+            ),
+            _buildNavIcon(
+              icon: FontAwesomeIcons.medal,
+              index: 2,
+              context: context,
+            ),
+            _buildNavIcon(
+              icon: FontAwesomeIcons.solidUser,
+              index: 3,
+              context: context,
+            ),
+          ],
         ),
       ),
     );

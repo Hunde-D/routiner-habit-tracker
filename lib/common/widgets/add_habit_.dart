@@ -17,6 +17,7 @@ class AddHabitCards extends StatelessWidget {
             Expanded(
               child: InkWell(
                 onTap: () {
+                  Navigator.pop(context);
                   showModalBottomSheet(
                     context: context,
                     backgroundColor: Theme.of(context).colorScheme.surface,
@@ -68,6 +69,7 @@ class AddHabitCards extends StatelessWidget {
             Expanded(
               child: InkWell(
                 onTap: () {
+                  Navigator.pop(context);
                   showModalBottomSheet(
                     context: context,
                     backgroundColor: Theme.of(context).colorScheme.surface,

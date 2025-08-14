@@ -58,6 +58,10 @@ class _NewHabitDialogState extends State<NewHabitDialog> {
                       leadingIcon: FontAwesomeIcons.plus,
                       size: const Size(36, 36),
                       borderRadius: 12,
+                      onTap: () => {
+                        Navigator.pop(context),
+                        Navigator.pushNamed(context, '/create-habit'),
+                      },
                     ),
                   ],
                 ),

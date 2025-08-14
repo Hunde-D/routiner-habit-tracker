@@ -34,3 +34,55 @@ final List<Challenge> challenges = [
     friendAvatars: ['assets/images/onboarding/avatar-large.png'],
   ),
 ];
+
+// ===Leaders Board ===
+final List<Map<String, dynamic>> leaderboard = [
+  {
+    "name": "MirayK",
+    "points": 1223,
+    "rank": 2,
+    "image": "assets/images/onboarding/avatar-medium.png",
+  },
+  {
+    "name": "Mert Kahveci",
+    "points": 1452,
+    "rank": 1,
+    "image": "assets/images/onboarding/avatar-small.png",
+  },
+  {
+    "name": "Onur O.",
+    "points": 968,
+    "rank": 3,
+    "image": "assets/images/onboarding/avatar-large.png",
+  },
+  {
+    "name": "Jennings Stohler",
+    "points": 912,
+    "rank": 4,
+    "image": "assets/images/onboarding/avatar-medium.png",
+  },
+  {
+    "name": "Scotty Tovias",
+    "points": 846,
+    "rank": 5,
+    "image": "assets/images/onboarding/avatar-large.png",
+  },
+  {
+    "name": "Amelina Aguila",
+    "points": 771,
+    "rank": 6,
+    "image": "assets/images/onboarding/avatar-medium.png",
+  },
+  {
+    "name": "Kally Cirrincione",
+    "points": 693,
+    "rank": 7,
+    "image": "assets/images/onboarding/avatar-small.png",
+  },
+  {
+    "name": "Layla Schupbach",
+    "points": 555,
+    "rank": 8,
+    "image": "assets/images/onboarding/avatar-large.png",
+  },
+];

@@ -4,6 +4,7 @@ import 'package:routiner/common/widgets/custom_tab.dart';
 import 'package:routiner/features/profile/presentation/views/achievements.dart';
 import 'package:routiner/features/profile/presentation/views/activity.dart';
 import 'package:routiner/features/profile/presentation/views/friends.dart';
+import 'package:routiner/l10n/app_localizations.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key, this.tabIndex});
@@ -52,8 +53,9 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AppBar(
-      title: const Text('Your Profile'),
+      title: Text(loc.yourProfile),
       leading: CustomLeading(
         padding: const EdgeInsets.fromLTRB(24.0, 12.0, 0.0, 12.0),
         onTap: () => Navigator.of(context).pop(),
@@ -108,7 +110,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Text(
-                            '🥇1460 Points',
+                            loc.points(1460),
                             style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(
                                   fontSize: 14,
@@ -122,7 +124,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
               CustomTab(
-                tabs: ['Activity', 'Friends', 'Achievements'],
+                tabs: [loc.activity, loc.friends, loc.achievements],
                 selectedIndex: selectedIndex,
                 onTabChange: onTabChange,
               ),

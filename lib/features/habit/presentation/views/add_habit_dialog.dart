@@ -20,7 +20,9 @@ class AddHabitDialog extends StatelessWidget {
           AddMood(),
           GradientIconButton(
             icon: FontAwesomeIcons.solidCircleXmark,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ],
       ),

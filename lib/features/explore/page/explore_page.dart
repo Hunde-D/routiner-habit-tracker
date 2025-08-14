@@ -7,6 +7,7 @@ import 'package:routiner/common/widgets/app_bar_leading.dart';
 import 'package:routiner/common/widgets/challenge_card.dart';
 import 'package:routiner/common/widgets/learning_card.dart';
 import 'package:routiner/common/widgets/popular_habits_card.dart';
+import 'package:routiner/l10n/app_localizations.dart';
 
 class ExplorePage extends StatelessWidget {
   const ExplorePage({super.key});
@@ -14,6 +15,7 @@ class ExplorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.fromLTRB(24.0, 12.0, 0.0, 12.0),
       child: Column(
@@ -27,11 +29,11 @@ class ExplorePage extends StatelessWidget {
               spacing: 8,
               children: [
                 Text(
-                  'Suggested for you',
+                  loc.suggestedForYou,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  'View All',
+                  loc.viewAll,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w500,
@@ -59,11 +61,11 @@ class ExplorePage extends StatelessWidget {
               spacing: 8,
               children: [
                 Text(
-                  'Habit Clubs',
+                  loc.habitClubs,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  'View All',
+                  loc.viewAll,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w500,
@@ -91,11 +93,11 @@ class ExplorePage extends StatelessWidget {
               spacing: 8,
               children: [
                 Text(
-                  'Challenges',
+                  loc.challenges,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  'View All',
+                  loc.viewAll,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w500,
@@ -125,9 +127,12 @@ class ExplorePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               spacing: 8,
               children: [
-                Text('Learning', style: Theme.of(context).textTheme.bodyLarge),
                 Text(
-                  'View All',
+                  loc.learning,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                Text(
+                  loc.viewAll,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w500,
@@ -172,9 +177,10 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AppBar(
       automaticallyImplyLeading: false,
-      title: const Text('Explore'),
+      title: Text(loc.explore),
       actions: [
         CustomLeading(
           leadingIcon: FontAwesomeIcons.magnifyingGlass,

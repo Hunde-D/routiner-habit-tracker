@@ -6,18 +6,94 @@ import 'package:routiner/common/widgets/challenge_card.dart';
 import 'package:routiner/common/widgets/custom_tab.dart';
 import 'package:routiner/common/widgets/date_timeline.dart';
 import 'package:routiner/common/widgets/habit_card.dart';
+import 'package:routiner/l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       children: [
         const DateTimeline(),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(14.0),
+            gradient: LinearGradient(
+              colors: [Color(0xFF6B73FF), Color(0xFF000DFF)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Card(
+            color: Colors.transparent,
+            margin: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 16.0,
+              ),
+              child: Row(
+                spacing: 12.0,
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: CircularProgressIndicator(
+                          value: 0.25,
+                          strokeWidth: 1.75,
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.surface.withValues(alpha: 0.3),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Theme.of(context).colorScheme.surface,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        '%${25}',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Your daily goals almost done! 🔥',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
+                      ),
+                      Text(
+                        '1 of 4 completed',
+                        style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.surface.withValues(alpha: 0.7),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,11 +104,11 @@ class HomePage extends StatelessWidget {
                 spacing: 8,
                 children: [
                   Text(
-                    'Challenges',
+                    loc.challenges,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Text(
-                    'View All',
+                    loc.viewAll,
                     style: Theme.of(context).textTheme.labelLarge!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w500,
@@ -40,16 +116,17 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              ChallengeCard(
-                challenge: challenges[0], onAddTap: () {},
-              ),
+              ChallengeCard(challenge: challenges[0], onAddTap: () {}),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 spacing: 8,
                 children: [
-                  Text('Habits', style: Theme.of(context).textTheme.bodyMedium),
                   Text(
-                    'View All',
+                    loc.habits,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  Text(
+                    loc.viewAll,
                     style: Theme.of(context).textTheme.labelLarge!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w500,
@@ -118,6 +195,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AppBar(
       leading: Builder(
         builder: (context) => CustomLeading(
@@ -149,11 +227,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi, Hunde 👋',
+                          '${loc.hiUser} Hunde 👋',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         Text(
-                          'Let’s make habits together!',
+                          loc.greeting,
                           style: Theme.of(
                             context,
                           ).textTheme.bodySmall?.copyWith(fontSize: 14),
@@ -169,7 +247,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
               CustomTab(
-                tabs: ['Today', 'Clubs'],
+                tabs: [loc.today, loc.clubs],
                 selectedIndex: selectedIndex,
                 onTabChange: onTabChange,
               ),
@@ -179,6 +257,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 125);
 }

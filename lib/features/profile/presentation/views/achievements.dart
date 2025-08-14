@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lucide_icons/lucide_icons.dart';
 import 'package:routiner/app/data/profile_dummy_data.dart';
-import 'package:routiner/common/widgets/app_bar_leading.dart';
+import 'package:routiner/l10n/app_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class Achievements extends StatelessWidget {
@@ -10,6 +8,7 @@ class Achievements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Column(
       children: [
         Padding(
@@ -18,7 +17,7 @@ class Achievements extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${achievementList.length} Achievements',
+                loc.achievementsCount(achievementList.length),
                 style: Theme.of(
                   context,
                 ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w600),

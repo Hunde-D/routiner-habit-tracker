@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
+import 'package:routiner/l10n/app_localizations.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -12,12 +13,13 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   bool isSoundEnabled = false;
-  bool isVacationMode  = false;
+  bool isVacationMode = false;
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text(loc.settings),
         leading: CustomLeading(onTap: () => Navigator.of(context).pop()),
       ),
       body: Padding(
@@ -30,7 +32,7 @@ class _SettingsState extends State<Settings> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8,
               children: [
-                Text('GENERAL'),
+                Text(loc.general),
                 Card(
                   margin: EdgeInsets.zero,
                   child: Padding(
@@ -41,9 +43,11 @@ class _SettingsState extends State<Settings> {
                     child: Column(
                       children: [
                         ListTile(
-                          title: Text('General'),
+                          title: Text(loc.general),
                           leading: Icon(
-                            FontAwesomeIcons.solidBookmark, size: 20),
+                            FontAwesomeIcons.solidBookmark,
+                            size: 20,
+                          ),
                           contentPadding: EdgeInsets.zero,
                           trailing: Icon(
                             FontAwesomeIcons.chevronRight,
@@ -58,7 +62,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         const Divider(),
                         ListTile(
-                          title: Text('Security'),
+                          title: Text(loc.security),
                           leading: Icon(FontAwesomeIcons.key, size: 20),
                           contentPadding: EdgeInsets.zero,
                           trailing: Icon(
@@ -74,7 +78,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         const Divider(),
                         ListTile(
-                          title: Text('Notifications'),
+                          title: Text(loc.notifications),
                           leading: Icon(FontAwesomeIcons.solidBell, size: 20),
                           contentPadding: EdgeInsets.zero,
                           trailing: Icon(
@@ -90,7 +94,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         const Divider(),
                         ListTile(
-                          title: Text('Sounds'),
+                          title: Text(loc.sounds),
                           leading: Icon(FontAwesomeIcons.volumeHigh, size: 20),
                           contentPadding: EdgeInsets.zero,
                           trailing: CupertinoSwitch(
@@ -110,11 +114,16 @@ class _SettingsState extends State<Settings> {
                         ),
                         const Divider(),
                         ListTile(
-                          title: Text('Sounds'),
-                          leading: Icon(FontAwesomeIcons.solidCirclePlay, size: 20),
+                          title: Text(loc.vacationMode),
+                          leading: Icon(
+                            FontAwesomeIcons.solidCirclePlay,
+                            size: 20,
+                          ),
                           contentPadding: EdgeInsets.zero,
                           trailing: CupertinoSwitch(
-                            activeTrackColor: Theme.of(context).colorScheme.primary,
+                            activeTrackColor: Theme.of(
+                              context,
+                            ).colorScheme.primary,
                             value: isVacationMode,
                             onChanged: (value) {
                               setState(() {
@@ -136,8 +145,8 @@ class _SettingsState extends State<Settings> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8.0,
               children: [
-              Text('ABOUT AS'),
-              Card(
+                Text(loc.aboutUs),
+                Card(
                   margin: EdgeInsets.zero,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -147,7 +156,7 @@ class _SettingsState extends State<Settings> {
                     child: Column(
                       children: [
                         ListTile(
-                          title: Text('Rate Routiner'),
+                          title: Text(loc.rateApp),
                           leading: Icon(FontAwesomeIcons.solidStar, size: 20),
                           contentPadding: EdgeInsets.zero,
                           trailing: Icon(
@@ -163,7 +172,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         const Divider(),
                         ListTile(
-                          title: Text('Share with Friends'),
+                          title: Text(loc.shareWithFriends),
                           leading: Icon(FontAwesomeIcons.share, size: 20),
                           contentPadding: EdgeInsets.zero,
                           trailing: Icon(
@@ -179,7 +188,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         const Divider(),
                         ListTile(
-                          title: Text('About Us'),
+                          title: Text(loc.aboutUs),
                           leading: Icon(FontAwesomeIcons.circleInfo, size: 20),
                           contentPadding: EdgeInsets.zero,
                           trailing: Icon(
@@ -195,8 +204,11 @@ class _SettingsState extends State<Settings> {
                         ),
                         const Divider(),
                         ListTile(
-                          title: Text('Support'),
-                          leading: Icon(FontAwesomeIcons.solidMessage, size: 20),
+                          title: Text(loc.support),
+                          leading: Icon(
+                            FontAwesomeIcons.solidMessage,
+                            size: 20,
+                          ),
                           contentPadding: EdgeInsets.zero,
                           trailing: Icon(
                             FontAwesomeIcons.chevronRight,
@@ -213,7 +225,8 @@ class _SettingsState extends State<Settings> {
                     ),
                   ),
                 ),
-              ]),
+              ],
+            ),
           ],
         ),
       ),

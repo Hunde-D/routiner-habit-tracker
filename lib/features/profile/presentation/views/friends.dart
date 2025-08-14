@@ -3,19 +3,22 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:routiner/app/data/profile_dummy_data.dart';
 import 'package:routiner/common/widgets/app_bar_leading.dart';
+import 'package:routiner/l10n/app_localizations.dart';
 
 class Friends extends StatelessWidget {
   const Friends({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Column(
+
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '${friendsList.length} Friends',
+              loc.friendsCount(friendsList.length),
               style: Theme.of(
                 context,
               ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w600),
